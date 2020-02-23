@@ -73,6 +73,12 @@ class cursosController extends controller {
                 $view = 'curso_aula_poll';
             }
 
+            if(isset($_POST['duvida']) && !empty($_POST['duvida'])){
+                $duvida = addslashes($_POST['duvida']);
+
+                $aula->setDuvida($duvida, $alunos->getId());
+            }
+
             $this->loadTemplate($view,$dados);
 
         }else{

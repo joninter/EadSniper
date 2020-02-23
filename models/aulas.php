@@ -64,4 +64,10 @@ class Aulas extends model{
         return $array;
     }
 
+    public function setDuvida($duvida,$aluno)
+    {
+        $sql = "INSERT INTO duvidas SET data_duvida = NOW(), duvida = '$duvida', id_aluno = '$id_aluno'";
+        $this->db->query($sql);
+    }
+
 }
