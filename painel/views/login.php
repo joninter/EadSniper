@@ -24,7 +24,7 @@
 </head>
 <body>
     <form method="post">
-        <h2>Login do Aluno</h2>
+        <h2>Login do Painel</h2>
         <input type="email" name="email" placeholder="E-mail"><br><br>
         <input type="password" name="senha"><br><br>
         <input type="submit" value="Entrar">

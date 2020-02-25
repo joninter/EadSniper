@@ -41,11 +41,21 @@ class Aulas extends model{
     {
         $array = array();
 
-        $sql = "SELECT tipo FROM aulas WHERE id = '$id_aula'";
+        $id_aluno = $_SESSION['lgaluno'];
+
+        $sql = "
+        SELECT 
+            tipo,
+            (select count(*) from historico where historico.id_aula = aulas.id and historico.id_aluno ='$id_aluno') as assistido
+        FROM 
+            aulas 
+        WHERE 
+            id = '$id_aula'";
         $sql = $this->db->query($sql);
 
         if($sql->rowCount() >0){
             $row = $sql->fetch();
+
 
             if($row['tipo'] == 'video'){
                 $sql = "SELECT * FROM videos WHERE id_aula = '$id_aula'";
@@ -59,6 +69,7 @@ class Aulas extends model{
                 $array = $sql->fetch();
                 $array['tipo'] = 'poll';
             }
+            $array['assistido'] = $row['assistido'];
         }
 
         return $array;
@@ -70,4 +81,9 @@ class Aulas extends model{
         $this->db->query($sql);
     }
 
+    public function marcarAssistido($id) {
+        $aluno = $_SESSION['lgaluno'];
+        $sql = "INSERT INTO historico SET data_viewed = NOW(), id_aluno = '$aluno', id_aula = '$id'";
+        $this->db->query($sql);
+    }
 }

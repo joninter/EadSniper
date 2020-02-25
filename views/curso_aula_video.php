@@ -4,6 +4,24 @@
     <?php echo $curso->getDescricao(); ?>
 </div>
 
+<!-- Video aula-->
+<div class="curso_left">
+    <h1>Vídeo - <?php echo $aula_info['nome']; ?></h1>
+    <iframe id="video" width="100%" style="width: 100%" frameborder="0" src="//player.vimeo.com/video/<?php echo $aula_info['url'];?>"></iframe><br/>
+    <?php echo $aula_info['descricao'];?>
+    <?php if($aula_info['assistido'] == '1'):?>
+        Esta aula já foi assistida!
+    <?php else: ?>
+        <button onclick="marcarAssistido(this)" data-id="<?php echo $aula_info['id_aula']; ?>">Marcar como assistido</button>
+    <?php endif;?>
+
+    <h3>Dúvidas? Envie a sua pergunta</h3>
+
+    <form method="POST">
+    <textarea name="duvida"></textarea><br/>
+    <input type="submit" value="Enviar Dúvida">
+    </form>
+</div>
 <!-- Lista de Aulas-->
 <div class="curso_right">
     <?php foreach($modulos as $modulo): ?>
@@ -18,18 +36,4 @@
             </a>
         <?php endforeach; ?>
     <?php endforeach; ?>
-</div>
-
-<!-- Video aula-->
-<div class="curso_left">
-<h1>Vídeo - <?php echo $aula_info['nome']; ?></h1>
-<iframe id="video" width="100%" style="width: 100%" frameborder="0" src="//player.vimeo.com/video/<?php echo $aula_info['url'];?>"></iframe><br/>
-<?php echo $aula_info['descricao'];?>
-
-<h3>Dúvidas? Envie a sua pergunta</h3>
-
-<form method="POST">
-<textarea name="duvida"></textarea><br/>
-<input type="submit" value="Enviar Dúvida">
-</form>
 </div>

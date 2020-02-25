@@ -11,5 +11,14 @@ function updateArea(){
     var video_altura = video_largura / ratio;
 
     $('#video').css('height',video_altura+'px');
-    
 }
+
+function marcarAssistido(obj) {
+    var id = $(obj).attr('data-id');
+
+    $(obj).remove();
+
+    $.ajax({
+        url:'/sniper/ajax/marcar_assistido/'+id,
+        type:'GET'
+    });}
