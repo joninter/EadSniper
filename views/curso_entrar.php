@@ -1,24 +1,35 @@
+<div class="container">
 <div class="cursoinfo">
-    <img src="<?php echo BASE;?>assets/images/cursos/<?php echo $curso->getImagem();?>" height="60">
-    <h3><?php echo $curso->getNome();?></h3>
-    <?php echo $curso->getDescricao(); ?>
+    <h3 class="my-courses" style="margin-top: 5rem;"><?php echo $curso->getNome();?></h3>
+    <img src="<?php echo BASE;?>assets/images/cursos/<?php echo $curso->getImagem();?>" style="width: 20rem;">
+
+    <p class="card-text">
+        <?php echo $curso->getDescricao(); ?>
+    </p>
 </div>
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Módulo</th>
+        <th scope="col">Nome</th>
+    </tr>
+    </thead>
+    <tbody>
 
-<div class="curso_left">
-
-
-</div>
-<div class="curso_right">
 <?php foreach($modulos as $modulo): ?>
-    <div class="modulo">
-        <?php echo $modulo['nome']; ?>
-    </div>
+<tr>
+    <th scope="row"><?php echo $modulo['nome']; ?></th>
     <?php foreach($modulo['aulas'] as $aula): ?>
-        <a href="<?php echo BASE; ?>cursos/aula/<?php echo $aula['id'];?>">
-            <div class="aula">
-                <?php echo $aula['nome']; ?>
-            </div>
-        </a>
+
+                <td><a href="<?php echo BASE; ?>cursos/aula/<?php echo $aula['id']; ?>"> <?php echo $aula['nome']; ?></a></td>
+
+<tr>
     <?php endforeach; ?>
+
 <?php endforeach; ?>
+    </tr>
+    </tbody>
+    </table>
+
 </div>
+<script src="<?php echo BASE;?>assets/js/script.js"></script>

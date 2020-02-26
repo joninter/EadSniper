@@ -1,39 +1,50 @@
-<div class="cursoinfo">
-    <img src="<?php echo BASE;?>assets/images/cursos/<?php echo $curso->getImagem();?>" height="60">
-    <h3><?php echo $curso->getNome();?></h3>
-    <?php echo $curso->getDescricao(); ?>
+<!-- Header Page -->
+<div class="container">
+    <div class="header-page">
+        <h2><?php echo $curso->getNome();?></h2>
+    </div>
 </div>
+<!-- /Header Page -->
+<!-- Play Movie -->
+<div class="container">
+    <div class="play-movie">
+        <article class="title-and-button">
+            <h3 class="my-courses"><?php echo $aula_info['nome']; ?></h3>
+            <?php if($aula_info['assistido'] == '1'):?>
+                <p class="alert-success" style="font-size: 20px;">Esta aula já foi assistida!</p>
+            <?php else: ?>
+                <button class="btn btn-primary" onclick="marcarAssistido(this)" data-id="<?php echo $aula_info['id_aula']; ?>">Marcar como assistido</button>
+            <?php endif;?>
 
-<!-- Video aula-->
-<div class="curso_left">
-    <h1>Vídeo - <?php echo $aula_info['nome']; ?></h1>
-    <iframe id="video" width="100%" style="width: 100%" frameborder="0" src="//player.vimeo.com/video/<?php echo $aula_info['url'];?>"></iframe><br/>
-    <?php echo $aula_info['descricao'];?>
-    <?php if($aula_info['assistido'] == '1'):?>
-        Esta aula já foi assistida!
-    <?php else: ?>
-        <button onclick="marcarAssistido(this)" data-id="<?php echo $aula_info['id_aula']; ?>">Marcar como assistido</button>
-    <?php endif;?>
-
-    <h3>Dúvidas? Envie a sua pergunta</h3>
-
-    <form method="POST">
-    <textarea name="duvida"></textarea><br/>
-    <input type="submit" value="Enviar Dúvida">
+        </article>
+        <!-- <article class="area-movie"></article> -->
+        <div class="c-video">
+            <video
+                    class="video"
+                    src="//player.vimeo.com/video/<?php echo $aula_info['url'];?>"
+                    controls
+                    controlsList="nodownload"
+            ></video>
+        </div>
+    </div>
+</div>
+<!-- /Play Movie -->
+<!-- Card Form -->
+<div class="container">
+    <h3 class="my-courses">Dúvidas? Envie a sua pergunta</h3>
+    <form class="box-form" method="POST">
+        <div class="form-group">
+          <textarea
+                  style="resize: none;"
+                  name="duvida"
+                  placeholder="Sua mensagem"
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+          ></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Enviar Dúvida" />
     </form>
 </div>
-<!-- Lista de Aulas-->
-<div class="curso_right">
-    <?php foreach($modulos as $modulo): ?>
-        <div class="modulo">
-            <?php echo $modulo['nome']; ?>
-        </div>
-        <?php foreach($modulo['aulas'] as $aula): ?>
-            <a href="<?php echo BASE; ?>cursos/aula/<?php echo $aula['id'];?>">
-                <div class="aula">
-                    <?php echo $aula['nome']; ?>
-                </div>
-            </a>
-        <?php endforeach; ?>
-    <?php endforeach; ?>
-</div>
+<!-- /Card Form -->
+<script src="<?php echo BASE;?>assets/js/script.js"></script>
