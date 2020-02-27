@@ -10,9 +10,9 @@
                     class="card-img-top"
                     alt="Curso BMF"
                 />
-                <div class="card-body" style="height: 10rem;">
+                <div class="card-body" style="height: 11rem;">
                     <h5 class="card-title"><?php echo $curso['nome']; ?></h5>
-                    <p class="card-text" style="height: 1rem;">
+                    <p class="card-text" style="height: 3rem;">
                         <?php echo $curso['descricao']; ?>
                     </p>
                     <a href="<?php echo BASE; ?>cursos/entrar/<?php echo $curso['id_curso']; ?>" class="btn btn-primary btn-block btn-lg">

@@ -22,7 +22,6 @@
     <?php foreach($modulo['aulas'] as $aula): ?>
 
                 <td><a href="<?php echo BASE; ?>cursos/aula/<?php echo $aula['id']; ?>"> <?php echo $aula['nome']; ?></a></td>
-
 <tr>
     <?php endforeach; ?>
 

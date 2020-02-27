@@ -1,63 +1,44 @@
-<h1>Editar Curso</h1>
+<!-- Header Page -->
+<div class="container">
+    <div class="header-page">
+        <h3 class="my-courses">Editar Curso</h3>
+    </div>
+</div>
+<!-- /Header Page -->
 
-<form method="POST" enctype="multipart/form-data">
+<!-- Card Form -->
+<div class="container">
+    <form class="box-form">
+        <div class="form-group">
+            <h4 style="">Nome</h4>
+            <input
+                    type="text"
+                    name="nome"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    value="<?php echo $curso['nome']; ?>"
 
-    Nome do curso:<br/>
-    <input type="text" name="nome" value="<?php echo $curso['nome']; ?>" /><br/><br/>
+            />
+        </div>
 
-    Descrição:<br/>
-    <textarea name="descricao"><?php echo $curso['descricao']; ?></textarea><br/><br/>
-
-    Imagem:<br/>
-    <input type="file" name="imagem" /><br/>
-    <img src="<?php echo BASE; ?>../assets/images/cursos/<?php echo $curso['imagem']; ?>" border="0" height="80" /><br/><br/>
-
-    <input type="submit" value="Salvar" />
-
-</form>
-
-<hr/>
-
-<h2>Aulas</h2>
-
-<fieldset>
-    <legend>Adicionar Módulo Novo</legend>
-    <form method="POST">
-        Nome do módulo:<br/>
-        <input type="text" name="modulo" /> <input type="submit" value="Adicionar Módulo" />
+        <div class="form-group">
+            <input
+                    type="file"
+                    class="form-control"
+                    name="imagem"
+            />
+            <img src="<?php echo BASE; ?>../assets/images/cursos/<?php echo $curso['imagem']; ?>" border="0" height="80" />
+        </div>
+        <div class="form-group">
+          <textarea
+                  name="descricao"
+                  style="resize: none;"
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+          ><?php echo $curso['descricao']; ?></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Salvar" />>
     </form>
-</fieldset><br/>
-
-<fieldset>
-    <legend>Adicionar Aula Nova</legend>
-    <form method="POST">
-        Titulo da aula:<br/>
-        <input type="text" name="aula" /><br/><br/>
-
-        Módulo da aula:<br/>
-        <select name="moduloaula">
-            <?php foreach($modulos as $modulo): ?>
-                <option value="<?php echo $modulo['id']; ?>"><?php echo utf8_encode($modulo['nome']); ?></option>
-            <?php endforeach; ?>
-        </select><br/><br/>
-
-        Tipo da aula:<br/>
-        <select name="tipo">
-            <option value="video">Vídeo</option>
-            <option value="poll">Questionário</option>
-        </select><br/><br/>
-
-        <input type="submit" value="Adicionar Aula" />
-    </form>
-</fieldset><br/>
-
-<?php foreach($modulos as $modulo): ?>
-
-    <h4><?php echo utf8_encode($modulo['nome']); ?> - <a href="<?php echo BASE; ?>home/edit_modulo/<?php echo $modulo['id']; ?>">[editar]</a> - <a href="<?php echo BASE; ?>home/del_modulo/<?php echo $modulo['id']; ?>">[excluir]</a></h4>
-
-    <?php foreach($modulo['aulas'] as $aula): ?>
-        <h5><?php echo $aula['nome']; ?> - <a href="<?php echo BASE; ?>home/edit_aula/<?php echo $aula['id']; ?>">[editar]</a> - <a href="<?php echo BASE; ?>home/del_aula/<?php echo $aula['id']; ?>">[excluir]</a></h5>
-    <?php endforeach; ?>
-
-
-<?php endforeach; ?>
+</div>
+<script src="script.js"></script>

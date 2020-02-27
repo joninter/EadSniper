@@ -45,32 +45,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="support.html">
-                        <i class="fas fa-headset"></i>
-                        <p>Suporte</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a>
                         <i class="fas fa-user-circle" style="color: #fff;"></i>
                         <p style="color: #fff;"><?php echo $viewData['info']->getNome();?></p>
                     </a>
                 </li>
                 <div class="btn-group">
-                    <button
+                    <a href="<?php echo BASE;?>login/logout"
                             type="button"
-                            class="btn btn-danger dropdown-toggle"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
+                            class="btn btn-danger"
                     >
-                        Minha conta
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ajustes</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo BASE;?>login/logout">Sair</a>
-                    </div>
+                        Sair
+                    </a>
                 </div>
             </ul>
         </div>
